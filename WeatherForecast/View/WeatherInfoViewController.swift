@@ -18,6 +18,7 @@ class WeatherInfoViewController: UIViewController {
         let weatherTableView = UITableView(frame: .zero, style: .plain)
         weatherTableView.register(CurrentWeatherInfoCell.self, forCellReuseIdentifier: CurrentWeatherInfoCell.identifier)
         weatherTableView.register(TemperatureCell.self, forCellReuseIdentifier: TemperatureCell.identifier)
+        weatherTableView.register(FiveDaysCell.self, forCellReuseIdentifier: FiveDaysCell.identifier)
         weatherTableView.backgroundColor = .clear
         weatherTableView.tableFooterView = UIView(frame: .zero)
         weatherTableView.sectionFooterHeight = 0
@@ -110,7 +111,7 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
         headerView.layer.masksToBounds = true
         headerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
-        let headerLabel = CustomLabel(title: "", size: Constants.size.size13, weight: .light, color: .text.black)
+        let headerLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .light, color: .text.black)
         let separator = CustomSeparator(height: 1)
         
         if section == 1 {
@@ -173,6 +174,23 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
             cell.layer.cornerRadius = Constants.radius.px12
             cell.layer.masksToBounds = true
             cell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+            
+            return cell
+        } else if indexPath.section == 2 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: FiveDaysCell.identifier, for: indexPath) as? FiveDaysCell else { return UITableViewCell() }
+            
+            cell.backgroundColor = .systemBlue
+            cell.selectionStyle = .none
+            
+            if indexPath.row == 4 {
+                cell.layer.cornerRadius = Constants.radius.px12
+                cell.layer.masksToBounds = true
+                cell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+            } else {
+                cell.layer.cornerRadius = 0
+            }
+            
+            cell.configure()
             
             return cell
         }

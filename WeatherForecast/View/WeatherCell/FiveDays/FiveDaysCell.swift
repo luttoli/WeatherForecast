@@ -11,7 +11,19 @@ import SnapKit
 
 class FiveDaysCell: UITableViewCell {
     // MARK: - Components
+    var dayLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
+    var iconImageView = UIImageView()
+    var temperatureLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
     
+    // MARK: - makeVerticalStackView
+    private lazy var dayInfoHorizontalStackView: UIStackView = {
+        let dayInfoHorizontalStackView = UIStackView(arrangedSubviews: [dayLabel, iconImageView, temperatureLabel])
+        dayInfoHorizontalStackView.axis = .horizontal
+        dayInfoHorizontalStackView.spacing = 0
+        dayInfoHorizontalStackView.alignment = .center
+        dayInfoHorizontalStackView.distribution = .equalSpacing
+        return dayInfoHorizontalStackView
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -30,11 +42,21 @@ class FiveDaysCell: UITableViewCell {
 // MARK: - SetUp
 private extension FiveDaysCell {
     func setUp() {
+        contentView.addSubview(dayInfoHorizontalStackView)
         
+        dayInfoHorizontalStackView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(contentView).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(contentView).offset(-Constants.margin.horizontal)
+        }
     }
 }
 
 // MARK: - Method
 extension FiveDaysCell {
-    
+    func configure() {
+        dayLabel.text = "오늘"
+        iconImageView.image = .checkmark
+        temperatureLabel.text = "최소: -7°   최고: 25°"
+    }
 }
