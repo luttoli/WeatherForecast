@@ -11,6 +11,7 @@ class CustomLabel: UILabel {
     init(title: String, size: CGFloat, weight: fontWeight, color: UIColor? = nil) {
         super.init(frame: .zero)
         
+        self.numberOfLines = 1
         self.text = title
         self.font = .toPretendard(size: size, weight: weight)
         if let color = color {

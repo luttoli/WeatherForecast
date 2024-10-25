@@ -23,6 +23,7 @@
 		B8CD65D32CCABD0700E8F8B3 /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65D22CCABD0700E8F8B3 /* UICollectionViewCell.swift */; };
 		B8CD65D52CCABD2F00E8F8B3 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65D42CCABD2F00E8F8B3 /* UITableViewCell.swift */; };
 		B8CD65D72CCB598100E8F8B3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65D62CCB598100E8F8B3 /* SearchViewController.swift */; };
+		B8CD65D92CCB5F3A00E8F8B3 /* CurrentWeatherInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65D82CCB5F3A00E8F8B3 /* CurrentWeatherInfoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		B8CD65D22CCABD0700E8F8B3 /* UICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
 		B8CD65D42CCABD2F00E8F8B3 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		B8CD65D62CCB598100E8F8B3 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		B8CD65D82CCB5F3A00E8F8B3 /* CurrentWeatherInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherInfoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				B8CD65AB2CCAB7E900E8F8B3 /* WeatherInfoViewController.swift */,
+				B8CD65DF2CCBE92D00E8F8B3 /* WeatherCell */,
 				B8CD65D62CCB598100E8F8B3 /* SearchViewController.swift */,
 			);
 			path = View;
@@ -148,6 +151,54 @@
 				B8CD65BF2CCAB90700E8F8B3 /* PretendardVariable.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		B8CD65DA2CCB657F00E8F8B3 /* CurrentWeatherInfo */ = {
+			isa = PBXGroup;
+			children = (
+				B8CD65D82CCB5F3A00E8F8B3 /* CurrentWeatherInfoCell.swift */,
+			);
+			path = CurrentWeatherInfo;
+			sourceTree = "<group>";
+		};
+		B8CD65DB2CCB659900E8F8B3 /* Temperature */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Temperature;
+			sourceTree = "<group>";
+		};
+		B8CD65DC2CCB666500E8F8B3 /* FiveDays */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FiveDays;
+			sourceTree = "<group>";
+		};
+		B8CD65DD2CCB66AD00E8F8B3 /* CityLocation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CityLocation;
+			sourceTree = "<group>";
+		};
+		B8CD65DE2CCB66C600E8F8B3 /* OtherInfo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OtherInfo;
+			sourceTree = "<group>";
+		};
+		B8CD65DF2CCBE92D00E8F8B3 /* WeatherCell */ = {
+			isa = PBXGroup;
+			children = (
+				B8CD65DA2CCB657F00E8F8B3 /* CurrentWeatherInfo */,
+				B8CD65DB2CCB659900E8F8B3 /* Temperature */,
+				B8CD65DC2CCB666500E8F8B3 /* FiveDays */,
+				B8CD65DD2CCB66AD00E8F8B3 /* CityLocation */,
+				B8CD65DE2CCB66C600E8F8B3 /* OtherInfo */,
+			);
+			path = WeatherCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8CD65D72CCB598100E8F8B3 /* SearchViewController.swift in Sources */,
+				B8CD65D92CCB5F3A00E8F8B3 /* CurrentWeatherInfoCell.swift in Sources */,
 				B8CD65D52CCABD2F00E8F8B3 /* UITableViewCell.swift in Sources */,
 				B8CD65B12CCAB7E900E8F8B3 /* AppDelegate.swift in Sources */,
 				B8CD65D12CCABBD300E8F8B3 /* UIColor.swift in Sources */,
