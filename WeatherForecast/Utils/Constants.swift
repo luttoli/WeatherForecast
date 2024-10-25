@@ -45,6 +45,7 @@ struct Radius {
 
 struct Size {
     let size10: CGFloat = 10
+    let size13: CGFloat = 13
     let size15: CGFloat = 15
     let size20: CGFloat = 20
     let size25: CGFloat = 25

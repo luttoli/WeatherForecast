@@ -24,6 +24,10 @@
 		B8CD65D52CCABD2F00E8F8B3 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65D42CCABD2F00E8F8B3 /* UITableViewCell.swift */; };
 		B8CD65D72CCB598100E8F8B3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65D62CCB598100E8F8B3 /* SearchViewController.swift */; };
 		B8CD65D92CCB5F3A00E8F8B3 /* CurrentWeatherInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65D82CCB5F3A00E8F8B3 /* CurrentWeatherInfoCell.swift */; };
+		B8CD65E12CCBE9F100E8F8B3 /* TemperatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65E02CCBE9F100E8F8B3 /* TemperatureCell.swift */; };
+		B8CD65E42CCBEA9600E8F8B3 /* TimeTemperatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65E32CCBEA9600E8F8B3 /* TimeTemperatureCell.swift */; };
+		B8CD65E62CCBF46E00E8F8B3 /* FiveDaysCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65E52CCBF46E00E8F8B3 /* FiveDaysCell.swift */; };
+		B8CD65E82CCC04F700E8F8B3 /* CustomSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65E72CCC04F700E8F8B3 /* CustomSeparator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +47,10 @@
 		B8CD65D42CCABD2F00E8F8B3 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		B8CD65D62CCB598100E8F8B3 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		B8CD65D82CCB5F3A00E8F8B3 /* CurrentWeatherInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherInfoCell.swift; sourceTree = "<group>"; };
+		B8CD65E02CCBE9F100E8F8B3 /* TemperatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureCell.swift; sourceTree = "<group>"; };
+		B8CD65E32CCBEA9600E8F8B3 /* TimeTemperatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTemperatureCell.swift; sourceTree = "<group>"; };
+		B8CD65E52CCBF46E00E8F8B3 /* FiveDaysCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDaysCell.swift; sourceTree = "<group>"; };
+		B8CD65E72CCC04F700E8F8B3 /* CustomSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSeparator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +112,7 @@
 			children = (
 				B8CD65CA2CCABB7100E8F8B3 /* Constants.swift */,
 				B8CD65CC2CCABB8300E8F8B3 /* CustomLabel.swift */,
+				B8CD65E72CCC04F700E8F8B3 /* CustomSeparator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -164,6 +173,8 @@
 		B8CD65DB2CCB659900E8F8B3 /* Temperature */ = {
 			isa = PBXGroup;
 			children = (
+				B8CD65E02CCBE9F100E8F8B3 /* TemperatureCell.swift */,
+				B8CD65E22CCBEA6500E8F8B3 /* Time */,
 			);
 			path = Temperature;
 			sourceTree = "<group>";
@@ -171,6 +182,7 @@
 		B8CD65DC2CCB666500E8F8B3 /* FiveDays */ = {
 			isa = PBXGroup;
 			children = (
+				B8CD65E52CCBF46E00E8F8B3 /* FiveDaysCell.swift */,
 			);
 			path = FiveDays;
 			sourceTree = "<group>";
@@ -199,6 +211,14 @@
 				B8CD65DE2CCB66C600E8F8B3 /* OtherInfo */,
 			);
 			path = WeatherCell;
+			sourceTree = "<group>";
+		};
+		B8CD65E22CCBEA6500E8F8B3 /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				B8CD65E32CCBEA9600E8F8B3 /* TimeTemperatureCell.swift */,
+			);
+			path = Time;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,12 +305,16 @@
 			files = (
 				B8CD65D72CCB598100E8F8B3 /* SearchViewController.swift in Sources */,
 				B8CD65D92CCB5F3A00E8F8B3 /* CurrentWeatherInfoCell.swift in Sources */,
+				B8CD65E12CCBE9F100E8F8B3 /* TemperatureCell.swift in Sources */,
+				B8CD65E42CCBEA9600E8F8B3 /* TimeTemperatureCell.swift in Sources */,
 				B8CD65D52CCABD2F00E8F8B3 /* UITableViewCell.swift in Sources */,
 				B8CD65B12CCAB7E900E8F8B3 /* AppDelegate.swift in Sources */,
 				B8CD65D12CCABBD300E8F8B3 /* UIColor.swift in Sources */,
+				B8CD65E82CCC04F700E8F8B3 /* CustomSeparator.swift in Sources */,
 				B8CD65D32CCABD0700E8F8B3 /* UICollectionViewCell.swift in Sources */,
 				B8CD65CD2CCABB8300E8F8B3 /* CustomLabel.swift in Sources */,
 				B8CD65CF2CCABBBE00E8F8B3 /* UIFont.swift in Sources */,
+				B8CD65E62CCBF46E00E8F8B3 /* FiveDaysCell.swift in Sources */,
 				B8CD65B22CCAB7E900E8F8B3 /* SceneDelegate.swift in Sources */,
 				B8CD65B32CCAB7E900E8F8B3 /* WeatherInfoViewController.swift in Sources */,
 				B8CD65CB2CCABB7100E8F8B3 /* Constants.swift in Sources */,

@@ -11,6 +11,7 @@ extension UIColor {
     static let text = TextColor()
     static let image = ImageViewColor()
     static let background = BackGroundColor()
+    static let border = BorderColor()
     static let cell = CellColor()
 
     struct TextColor {
@@ -25,6 +26,10 @@ extension UIColor {
     
     struct BackGroundColor {
         var white = UIColor.white
+    }
+    
+    struct BorderColor {
+        var lightGray = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1.0)
     }
     
     struct CellColor {
