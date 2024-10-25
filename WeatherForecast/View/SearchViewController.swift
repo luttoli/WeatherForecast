@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SearchViewController.swift
 //  WeatherForecast
 //
 //  Created by 김지훈 on 10/25/24.
@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+import SnapKit
+
+class SearchViewController: UIViewController {
     // MARK: - Properties
     
     
@@ -25,11 +27,11 @@ class ViewController: UIViewController {
 }
 
 // MARK: - LifeCycle
-extension ViewController {
+extension SearchViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .background.white
+        view.backgroundColor = .red
         
         navigationUI()
         setUp()
@@ -37,29 +39,28 @@ extension ViewController {
 }
 
 // MARK: - Navigation
-extension ViewController {
+extension SearchViewController {
     func navigationUI() {
         navigationController?.navigationBar.barTintColor = .background.white
         
-        let viewTitle = CustomLabel(title: "", size: Constants.size.size30, weight: .Bold, color: .text.black)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: viewTitle)
+        
     }
 }
 
 // MARK: - SetUp
-private extension ViewController {
+private extension SearchViewController {
     func setUp() {
         
     }
 }
 
 // MARK: - Method
-private extension ViewController {
-
+private extension SearchViewController {
+    
 }
 
 // MARK: - Delegate
-extension ViewController {
+extension SearchViewController {
     
 }
 
