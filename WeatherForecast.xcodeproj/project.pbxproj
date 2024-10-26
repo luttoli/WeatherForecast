@@ -28,6 +28,7 @@
 		B8CD65E42CCBEA9600E8F8B3 /* TimeTemperatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65E32CCBEA9600E8F8B3 /* TimeTemperatureCell.swift */; };
 		B8CD65E62CCBF46E00E8F8B3 /* FiveDaysCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65E52CCBF46E00E8F8B3 /* FiveDaysCell.swift */; };
 		B8CD65E82CCC04F700E8F8B3 /* CustomSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65E72CCC04F700E8F8B3 /* CustomSeparator.swift */; };
+		B8CD65EA2CCC8F0D00E8F8B3 /* CityLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65E92CCC8F0D00E8F8B3 /* CityLocationCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		B8CD65E32CCBEA9600E8F8B3 /* TimeTemperatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTemperatureCell.swift; sourceTree = "<group>"; };
 		B8CD65E52CCBF46E00E8F8B3 /* FiveDaysCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDaysCell.swift; sourceTree = "<group>"; };
 		B8CD65E72CCC04F700E8F8B3 /* CustomSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSeparator.swift; sourceTree = "<group>"; };
+		B8CD65E92CCC8F0D00E8F8B3 /* CityLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityLocationCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 		B8CD65DD2CCB66AD00E8F8B3 /* CityLocation */ = {
 			isa = PBXGroup;
 			children = (
+				B8CD65E92CCC8F0D00E8F8B3 /* CityLocationCell.swift */,
 			);
 			path = CityLocation;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				B8CD65D72CCB598100E8F8B3 /* SearchViewController.swift in Sources */,
 				B8CD65D92CCB5F3A00E8F8B3 /* CurrentWeatherInfoCell.swift in Sources */,
 				B8CD65E12CCBE9F100E8F8B3 /* TemperatureCell.swift in Sources */,
+				B8CD65EA2CCC8F0D00E8F8B3 /* CityLocationCell.swift in Sources */,
 				B8CD65E42CCBEA9600E8F8B3 /* TimeTemperatureCell.swift in Sources */,
 				B8CD65D52CCABD2F00E8F8B3 /* UITableViewCell.swift in Sources */,
 				B8CD65B12CCAB7E900E8F8B3 /* AppDelegate.swift in Sources */,

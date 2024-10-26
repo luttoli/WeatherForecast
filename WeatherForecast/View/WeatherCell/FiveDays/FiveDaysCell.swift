@@ -14,8 +14,8 @@ class FiveDaysCell: UITableViewCell {
     var dayLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
     var iconImageView = UIImageView()
     var temperatureLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
+    var separator = CustomSeparator(height: 1)
     
-    // MARK: - makeVerticalStackView
     private lazy var dayInfoHorizontalStackView: UIStackView = {
         let dayInfoHorizontalStackView = UIStackView(arrangedSubviews: [dayLabel, iconImageView, temperatureLabel])
         dayInfoHorizontalStackView.axis = .horizontal
@@ -43,11 +43,18 @@ class FiveDaysCell: UITableViewCell {
 private extension FiveDaysCell {
     func setUp() {
         contentView.addSubview(dayInfoHorizontalStackView)
+        contentView.addSubview(separator)
         
         dayInfoHorizontalStackView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalTo(contentView).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(contentView).offset(-Constants.margin.horizontal)
+        }
+        
+        separator.snp.makeConstraints {
+            $0.leading.equalTo(contentView).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(contentView).offset(-Constants.margin.horizontal)
+            $0.bottom.equalTo(contentView)
         }
     }
 }

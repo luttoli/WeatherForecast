@@ -19,6 +19,7 @@ class WeatherInfoViewController: UIViewController {
         weatherTableView.register(CurrentWeatherInfoCell.self, forCellReuseIdentifier: CurrentWeatherInfoCell.identifier)
         weatherTableView.register(TemperatureCell.self, forCellReuseIdentifier: TemperatureCell.identifier)
         weatherTableView.register(FiveDaysCell.self, forCellReuseIdentifier: FiveDaysCell.identifier)
+        weatherTableView.register(CityLocationCell.self, forCellReuseIdentifier: CityLocationCell.identifier)
         weatherTableView.backgroundColor = .clear
         weatherTableView.tableFooterView = UIView(frame: .zero)
         weatherTableView.sectionFooterHeight = 0
@@ -73,7 +74,7 @@ private extension WeatherInfoViewController {
         view.addSubview(weatherTableView)
         
         weatherTableView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.vertical)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
@@ -133,10 +134,14 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
             $0.trailing.equalTo(headerView).offset(-Constants.margin.horizontal)
         }
         
-        separator.snp.makeConstraints {
-            $0.leading.equalTo(headerView).offset(Constants.margin.horizontal)
-            $0.trailing.equalTo(headerView).offset(-Constants.margin.horizontal)
-            $0.bottom.equalTo(headerView)
+        if section == 3 {
+            separator.isHidden = true
+        } else {
+            separator.snp.makeConstraints {
+                $0.leading.equalTo(headerView).offset(Constants.margin.horizontal)
+                $0.trailing.equalTo(headerView).offset(-Constants.margin.horizontal)
+                $0.bottom.equalTo(headerView)
+            }
         }
         
         return headerView
@@ -193,6 +198,17 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
             cell.configure()
             
             return cell
+        } else if indexPath.section == 3 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CityLocationCell.identifier, for: indexPath) as? CityLocationCell else { return UITableViewCell() }
+            
+            cell.backgroundColor = .systemBlue
+            cell.selectionStyle = .none
+            
+            cell.layer.cornerRadius = Constants.radius.px12
+            cell.layer.masksToBounds = true
+            cell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+            
+            return cell
         }
         
         return UITableViewCell()
@@ -201,12 +217,13 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return 260
+        } else if indexPath.section == 1 {
+            return 100
         } else if indexPath.section == 2 {
             return 50
         } else {
-            return 100
+            let width = tableView.frame.width - (Constants.margin.horizontal * 2)
+            return width
         }
     }
-    
-    
 }
