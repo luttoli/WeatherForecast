@@ -31,6 +31,8 @@
 		B8CD65EA2CCC8F0D00E8F8B3 /* CityLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65E92CCC8F0D00E8F8B3 /* CityLocationCell.swift */; };
 		B8CD65EC2CCCCE3400E8F8B3 /* OtherAverageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65EB2CCCCE3400E8F8B3 /* OtherAverageCell.swift */; };
 		B8CD65EF2CCCCEEE00E8F8B3 /* AverageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65EE2CCCCEEE00E8F8B3 /* AverageCell.swift */; };
+		B8CD65F22CCCD7BF00E8F8B3 /* CityListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65F12CCCD7BF00E8F8B3 /* CityListCell.swift */; };
+		B8CD65F52CCCF00A00E8F8B3 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B8CD65F42CCCF00A00E8F8B3 /* IQKeyboardManagerSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,7 @@
 		B8CD65E92CCC8F0D00E8F8B3 /* CityLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityLocationCell.swift; sourceTree = "<group>"; };
 		B8CD65EB2CCCCE3400E8F8B3 /* OtherAverageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherAverageCell.swift; sourceTree = "<group>"; };
 		B8CD65EE2CCCCEEE00E8F8B3 /* AverageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageCell.swift; sourceTree = "<group>"; };
+		B8CD65F12CCCD7BF00E8F8B3 /* CityListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +68,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8CD65C92CCABAF800E8F8B3 /* RxSwift in Frameworks */,
+				B8CD65F52CCCF00A00E8F8B3 /* IQKeyboardManagerSwift in Frameworks */,
 				B8CD65C32CCABA2000E8F8B3 /* SnapKit in Frameworks */,
 				B8CD65C62CCABA5F00E8F8B3 /* Alamofire in Frameworks */,
 			);
@@ -134,8 +138,9 @@
 			isa = PBXGroup;
 			children = (
 				B8CD65AB2CCAB7E900E8F8B3 /* WeatherInfoViewController.swift */,
-				B8CD65DF2CCBE92D00E8F8B3 /* WeatherCell */,
+				B8CD65DF2CCBE92D00E8F8B3 /* WeatherInfoCell */,
 				B8CD65D62CCB598100E8F8B3 /* SearchViewController.swift */,
+				B8CD65F02CCCD7A500E8F8B3 /* City */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -210,7 +215,7 @@
 			path = OtherInfo;
 			sourceTree = "<group>";
 		};
-		B8CD65DF2CCBE92D00E8F8B3 /* WeatherCell */ = {
+		B8CD65DF2CCBE92D00E8F8B3 /* WeatherInfoCell */ = {
 			isa = PBXGroup;
 			children = (
 				B8CD65DA2CCB657F00E8F8B3 /* CurrentWeatherInfo */,
@@ -219,7 +224,7 @@
 				B8CD65DD2CCB66AD00E8F8B3 /* CityLocation */,
 				B8CD65DE2CCB66C600E8F8B3 /* OtherInfo */,
 			);
-			path = WeatherCell;
+			path = WeatherInfoCell;
 			sourceTree = "<group>";
 		};
 		B8CD65E22CCBEA6500E8F8B3 /* Time */ = {
@@ -236,6 +241,14 @@
 				B8CD65EE2CCCCEEE00E8F8B3 /* AverageCell.swift */,
 			);
 			path = Average;
+			sourceTree = "<group>";
+		};
+		B8CD65F02CCCD7A500E8F8B3 /* City */ = {
+			isa = PBXGroup;
+			children = (
+				B8CD65F12CCCD7BF00E8F8B3 /* CityListCell.swift */,
+			);
+			path = City;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +271,7 @@
 				B8CD65C22CCABA2000E8F8B3 /* SnapKit */,
 				B8CD65C52CCABA5F00E8F8B3 /* Alamofire */,
 				B8CD65C82CCABAF800E8F8B3 /* RxSwift */,
+				B8CD65F42CCCF00A00E8F8B3 /* IQKeyboardManagerSwift */,
 			);
 			productName = WeatherForecast;
 			productReference = B8CD658B2CCAB75800E8F8B3 /* WeatherForecast.app */;
@@ -291,6 +305,7 @@
 				B8CD65C12CCABA2000E8F8B3 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				B8CD65C42CCABA5F00E8F8B3 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				B8CD65C72CCABAF800E8F8B3 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				B8CD65F32CCCF00A00E8F8B3 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B8CD658C2CCAB75800E8F8B3 /* Products */;
@@ -334,6 +349,7 @@
 				B8CD65D32CCABD0700E8F8B3 /* UICollectionViewCell.swift in Sources */,
 				B8CD65CD2CCABB8300E8F8B3 /* CustomLabel.swift in Sources */,
 				B8CD65CF2CCABBBE00E8F8B3 /* UIFont.swift in Sources */,
+				B8CD65F22CCCD7BF00E8F8B3 /* CityListCell.swift in Sources */,
 				B8CD65E62CCBF46E00E8F8B3 /* FiveDaysCell.swift in Sources */,
 				B8CD65B22CCAB7E900E8F8B3 /* SceneDelegate.swift in Sources */,
 				B8CD65B32CCAB7E900E8F8B3 /* WeatherInfoViewController.swift in Sources */,
@@ -567,6 +583,14 @@
 				minimumVersion = 6.8.0;
 			};
 		};
+		B8CD65F32CCCF00A00E8F8B3 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -584,6 +608,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B8CD65C72CCABAF800E8F8B3 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		B8CD65F42CCCF00A00E8F8B3 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8CD65F32CCCF00A00E8F8B3 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -33,7 +33,6 @@ private extension CustomSeparator {
     func setUp(height: CGFloat) {
         backgroundColor = .border.lightGray
         self.snp.makeConstraints {
-            $0.width.equalTo(Constants.screenWidth - (Constants.margin.horizontal * 2))
             $0.height.equalTo(height)
         }
     }

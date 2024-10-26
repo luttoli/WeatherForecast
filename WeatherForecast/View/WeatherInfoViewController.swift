@@ -87,12 +87,13 @@ private extension WeatherInfoViewController {
 
 // MARK: - Method
 private extension WeatherInfoViewController {
-
+    
 }
 
 // MARK: - Delegate
 extension WeatherInfoViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
         let searchVC = SearchViewController()
         searchVC.modalPresentationStyle = .formSheet
         present(searchVC, animated: true, completion: nil)
@@ -167,6 +168,8 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrentWeatherInfoCell.identifier, for: indexPath) as? CurrentWeatherInfoCell else { return UITableViewCell() }
+            
+            cell.selectionStyle = .none
             
             cell.configure()
             

@@ -14,9 +14,12 @@ class CityLocationCell: UITableViewCell {
     // MARK: - Components
     private var mapView: MKMapView = {
         let mapView = MKMapView()
-        mapView.showsUserLocation = true
+        mapView.showsUserLocation = false
         mapView.userTrackingMode = .none
         mapView.mapType = .hybrid
+        mapView.isScrollEnabled = false
+        mapView.isRotateEnabled = false
+        mapView.isZoomEnabled = false
         return mapView
     }()
     
