@@ -7,15 +7,17 @@
 
 import UIKit
 
-
+import RxSwift
 import SnapKit
 
 class SearchViewController: UIViewController {
     // MARK: - Properties
-    
+    private let viewModel = SearchViewModel()
+    private let disposeBag = DisposeBag()
+    private var cities: [CityList] = []
     
     // MARK: - Components
-    let searchBar: UISearchBar = {
+    private let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.placeholder = "Search"
         searchBar.searchBarStyle = .minimal
@@ -23,13 +25,10 @@ class SearchViewController: UIViewController {
         return searchBar
     }()
     
-    private let cityListTableView: UITableView = {
+    let cityListTableView: UITableView = {
         let cityListTableView = UITableView(frame: .zero, style: .plain)
         cityListTableView.register(CityListCell.self, forCellReuseIdentifier: CityListCell.identifier)
         cityListTableView.backgroundColor = .clear
-        cityListTableView.tableFooterView = UIView(frame: .zero)
-        cityListTableView.sectionFooterHeight = 0
-        cityListTableView.showsVerticalScrollIndicator = false
         cityListTableView.separatorStyle = .none
         return cityListTableView
     }()
@@ -53,6 +52,7 @@ extension SearchViewController {
         
         navigationUI()
         setUp()
+        bindViewModel()
     }
 }
 
@@ -89,7 +89,15 @@ private extension SearchViewController {
 
 // MARK: - Method
 private extension SearchViewController {
-    
+    private func bindViewModel() {
+        viewModel.cities
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] cities in
+                self?.cities = cities
+                self?.cityListTableView.reloadData()
+            })
+            .disposed(by: disposeBag)
+    }
 }
 
 // MARK: - Delegate
@@ -106,7 +114,7 @@ extension SearchViewController: UISearchBarDelegate {
 // MARK: - TableViewDelegate
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return cities.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -115,7 +123,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
         
-        cell.configure()
+        let city = cities[indexPath.row]
+
+        cell.configure(with: city)
         
         return cell
     }

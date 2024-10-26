@@ -33,6 +33,11 @@
 		B8CD65EF2CCCCEEE00E8F8B3 /* AverageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65EE2CCCCEEE00E8F8B3 /* AverageCell.swift */; };
 		B8CD65F22CCCD7BF00E8F8B3 /* CityListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65F12CCCD7BF00E8F8B3 /* CityListCell.swift */; };
 		B8CD65F52CCCF00A00E8F8B3 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B8CD65F42CCCF00A00E8F8B3 /* IQKeyboardManagerSwift */; };
+		B8CD65F82CCD4DF000E8F8B3 /* reduced_citylist.json in Resources */ = {isa = PBXBuildFile; fileRef = B8CD65F72CCD4DF000E8F8B3 /* reduced_citylist.json */; };
+		B8CD65FA2CCD4E3100E8F8B3 /* CityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65F92CCD4E3100E8F8B3 /* CityList.swift */; };
+		B8CD65FC2CCD51CF00E8F8B3 /* CitiesParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65FB2CCD51CF00E8F8B3 /* CitiesParsing.swift */; };
+		B8CD65FE2CCD545A00E8F8B3 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65FD2CCD545A00E8F8B3 /* SearchViewModel.swift */; };
+		B8CD66012CCD558B00E8F8B3 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B8CD66002CCD558B00E8F8B3 /* RxCocoa */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +65,10 @@
 		B8CD65EB2CCCCE3400E8F8B3 /* OtherAverageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherAverageCell.swift; sourceTree = "<group>"; };
 		B8CD65EE2CCCCEEE00E8F8B3 /* AverageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageCell.swift; sourceTree = "<group>"; };
 		B8CD65F12CCCD7BF00E8F8B3 /* CityListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListCell.swift; sourceTree = "<group>"; };
+		B8CD65F72CCD4DF000E8F8B3 /* reduced_citylist.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = reduced_citylist.json; sourceTree = "<group>"; };
+		B8CD65F92CCD4E3100E8F8B3 /* CityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityList.swift; sourceTree = "<group>"; };
+		B8CD65FB2CCD51CF00E8F8B3 /* CitiesParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesParsing.swift; sourceTree = "<group>"; };
+		B8CD65FD2CCD545A00E8F8B3 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +78,7 @@
 			files = (
 				B8CD65C92CCABAF800E8F8B3 /* RxSwift in Frameworks */,
 				B8CD65F52CCCF00A00E8F8B3 /* IQKeyboardManagerSwift in Frameworks */,
+				B8CD66012CCD558B00E8F8B3 /* RxCocoa in Frameworks */,
 				B8CD65C32CCABA2000E8F8B3 /* SnapKit in Frameworks */,
 				B8CD65C62CCABA5F00E8F8B3 /* Alamofire in Frameworks */,
 			);
@@ -81,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				B8CD65AC2CCAB7E900E8F8B3 /* WeatherForecast */,
+				B8CD65FF2CCD558B00E8F8B3 /* Frameworks */,
 				B8CD658C2CCAB75800E8F8B3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -96,7 +107,8 @@
 		B8CD65AC2CCAB7E900E8F8B3 /* WeatherForecast */ = {
 			isa = PBXGroup;
 			children = (
-				B8CD65B82CCAB80A00E8F8B3 /* Mode */,
+				B8CD65F62CCD4BF600E8F8B3 /* Networking */,
+				B8CD65B82CCAB80A00E8F8B3 /* Model */,
 				B8CD65B72CCAB80200E8F8B3 /* View */,
 				B8CD65B62CCAB80000E8F8B3 /* ViewModel */,
 				B8CD65B52CCAB7FF00E8F8B3 /* Utils */,
@@ -130,6 +142,7 @@
 		B8CD65B62CCAB80000E8F8B3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				B8CD65FD2CCD545A00E8F8B3 /* SearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -145,11 +158,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		B8CD65B82CCAB80A00E8F8B3 /* Mode */ = {
+		B8CD65B82CCAB80A00E8F8B3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B8CD65F92CCD4E3100E8F8B3 /* CityList.swift */,
 			);
-			path = Mode;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B8CD65B92CCAB84B00E8F8B3 /* Resource */ = {
@@ -161,6 +175,7 @@
 				B8CD65A42CCAB7E900E8F8B3 /* Assets.xcassets */,
 				B8CD65A52CCAB7E900E8F8B3 /* Info.plist */,
 				B8CD65BD2CCAB8D600E8F8B3 /* LaunchScreen.storyboard */,
+				B8CD65F72CCD4DF000E8F8B3 /* reduced_citylist.json */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -251,6 +266,21 @@
 			path = City;
 			sourceTree = "<group>";
 		};
+		B8CD65F62CCD4BF600E8F8B3 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				B8CD65FB2CCD51CF00E8F8B3 /* CitiesParsing.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		B8CD65FF2CCD558B00E8F8B3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -272,6 +302,7 @@
 				B8CD65C52CCABA5F00E8F8B3 /* Alamofire */,
 				B8CD65C82CCABAF800E8F8B3 /* RxSwift */,
 				B8CD65F42CCCF00A00E8F8B3 /* IQKeyboardManagerSwift */,
+				B8CD66002CCD558B00E8F8B3 /* RxCocoa */,
 			);
 			productName = WeatherForecast;
 			productReference = B8CD658B2CCAB75800E8F8B3 /* WeatherForecast.app */;
@@ -323,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8CD65AD2CCAB7E900E8F8B3 /* Assets.xcassets in Resources */,
+				B8CD65F82CCD4DF000E8F8B3 /* reduced_citylist.json in Resources */,
 				B8CD65BE2CCAB8D600E8F8B3 /* LaunchScreen.storyboard in Resources */,
 				B8CD65C02CCAB90700E8F8B3 /* PretendardVariable.ttf in Resources */,
 			);
@@ -335,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8CD65FE2CCD545A00E8F8B3 /* SearchViewModel.swift in Sources */,
 				B8CD65D72CCB598100E8F8B3 /* SearchViewController.swift in Sources */,
 				B8CD65D92CCB5F3A00E8F8B3 /* CurrentWeatherInfoCell.swift in Sources */,
 				B8CD65E12CCBE9F100E8F8B3 /* TemperatureCell.swift in Sources */,
@@ -349,6 +382,8 @@
 				B8CD65D32CCABD0700E8F8B3 /* UICollectionViewCell.swift in Sources */,
 				B8CD65CD2CCABB8300E8F8B3 /* CustomLabel.swift in Sources */,
 				B8CD65CF2CCABBBE00E8F8B3 /* UIFont.swift in Sources */,
+				B8CD65FA2CCD4E3100E8F8B3 /* CityList.swift in Sources */,
+				B8CD65FC2CCD51CF00E8F8B3 /* CitiesParsing.swift in Sources */,
 				B8CD65F22CCCD7BF00E8F8B3 /* CityListCell.swift in Sources */,
 				B8CD65E62CCBF46E00E8F8B3 /* FiveDaysCell.swift in Sources */,
 				B8CD65B22CCAB7E900E8F8B3 /* SceneDelegate.swift in Sources */,
@@ -613,6 +648,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B8CD65F32CCCF00A00E8F8B3 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		B8CD66002CCD558B00E8F8B3 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8CD65C72CCABAF800E8F8B3 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

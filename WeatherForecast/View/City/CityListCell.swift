@@ -11,7 +11,7 @@ import SnapKit
 
 class CityListCell: UITableViewCell {
     // MARK: - Components
-    var cityNameLabel = CustomLabel(title: "", size: Constants.size.size25, weight: .SemiBold, color: .text.black)
+    var cityNameLabel = CustomLabel(title: "", size: Constants.size.size20, weight: .SemiBold, color: .text.black)
     var countryNameLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
     var separator = CustomSeparator(height: 1)
     
@@ -26,6 +26,8 @@ class CityListCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        cityNameLabel.text = ""
+        countryNameLabel.text = ""
     }
 }
 
@@ -59,8 +61,8 @@ private extension CityListCell {
 
 // MARK: - Method
 extension CityListCell {
-    func configure() {
-        cityNameLabel.text = "Seoul"
-        countryNameLabel.text = "KR"
+    func configure(with city: CityList) {
+        cityNameLabel.text = city.name
+        countryNameLabel.text = city.country
     }
 }
