@@ -20,6 +20,7 @@ class WeatherInfoViewController: UIViewController {
         weatherTableView.register(TemperatureCell.self, forCellReuseIdentifier: TemperatureCell.identifier)
         weatherTableView.register(FiveDaysCell.self, forCellReuseIdentifier: FiveDaysCell.identifier)
         weatherTableView.register(CityLocationCell.self, forCellReuseIdentifier: CityLocationCell.identifier)
+        weatherTableView.register(OtherAverageCell.self, forCellReuseIdentifier: OtherAverageCell.identifier)
         weatherTableView.backgroundColor = .clear
         weatherTableView.tableFooterView = UIView(frame: .zero)
         weatherTableView.sectionFooterHeight = 0
@@ -121,8 +122,6 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
             headerLabel.text = "5일간의 일기예보"
         } else if section == 3 {
             headerLabel.text = "강수량"
-        } else if section == 4 {
-            headerLabel.text = "?"
         }
         
         headerView.addSubview(headerLabel)
@@ -149,6 +148,8 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
+            return 0
+        } else if section == 4 {
             return 0
         } else {
             return Constants.size.size40
@@ -209,6 +210,13 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
             cell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
             
             return cell
+        } else if indexPath.section == 4 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: OtherAverageCell.identifier, for: indexPath) as? OtherAverageCell else { return UITableViewCell() }
+            
+            cell.backgroundColor = .clear
+            cell.selectionStyle = .none
+
+            return cell
         }
         
         return UITableViewCell()
@@ -221,9 +229,13 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
             return 100
         } else if indexPath.section == 2 {
             return 50
-        } else {
+        } else if indexPath.section == 3 {
             let width = tableView.frame.width - (Constants.margin.horizontal * 2)
             return width
+        } else if indexPath.section == 4 {
+            let width = tableView.frame.width
+            return width
         }
+        return CGFloat()
     }
 }

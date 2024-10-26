@@ -29,6 +29,8 @@
 		B8CD65E62CCBF46E00E8F8B3 /* FiveDaysCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65E52CCBF46E00E8F8B3 /* FiveDaysCell.swift */; };
 		B8CD65E82CCC04F700E8F8B3 /* CustomSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65E72CCC04F700E8F8B3 /* CustomSeparator.swift */; };
 		B8CD65EA2CCC8F0D00E8F8B3 /* CityLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65E92CCC8F0D00E8F8B3 /* CityLocationCell.swift */; };
+		B8CD65EC2CCCCE3400E8F8B3 /* OtherAverageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65EB2CCCCE3400E8F8B3 /* OtherAverageCell.swift */; };
+		B8CD65EF2CCCCEEE00E8F8B3 /* AverageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65EE2CCCCEEE00E8F8B3 /* AverageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,8 @@
 		B8CD65E52CCBF46E00E8F8B3 /* FiveDaysCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDaysCell.swift; sourceTree = "<group>"; };
 		B8CD65E72CCC04F700E8F8B3 /* CustomSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSeparator.swift; sourceTree = "<group>"; };
 		B8CD65E92CCC8F0D00E8F8B3 /* CityLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityLocationCell.swift; sourceTree = "<group>"; };
+		B8CD65EB2CCCCE3400E8F8B3 /* OtherAverageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherAverageCell.swift; sourceTree = "<group>"; };
+		B8CD65EE2CCCCEEE00E8F8B3 /* AverageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +204,8 @@
 		B8CD65DE2CCB66C600E8F8B3 /* OtherInfo */ = {
 			isa = PBXGroup;
 			children = (
+				B8CD65EB2CCCCE3400E8F8B3 /* OtherAverageCell.swift */,
+				B8CD65ED2CCCCED600E8F8B3 /* Average */,
 			);
 			path = OtherInfo;
 			sourceTree = "<group>";
@@ -222,6 +228,14 @@
 				B8CD65E32CCBEA9600E8F8B3 /* TimeTemperatureCell.swift */,
 			);
 			path = Time;
+			sourceTree = "<group>";
+		};
+		B8CD65ED2CCCCED600E8F8B3 /* Average */ = {
+			isa = PBXGroup;
+			children = (
+				B8CD65EE2CCCCEEE00E8F8B3 /* AverageCell.swift */,
+			);
+			path = Average;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,6 +325,8 @@
 				B8CD65E12CCBE9F100E8F8B3 /* TemperatureCell.swift in Sources */,
 				B8CD65EA2CCC8F0D00E8F8B3 /* CityLocationCell.swift in Sources */,
 				B8CD65E42CCBEA9600E8F8B3 /* TimeTemperatureCell.swift in Sources */,
+				B8CD65EF2CCCCEEE00E8F8B3 /* AverageCell.swift in Sources */,
+				B8CD65EC2CCCCE3400E8F8B3 /* OtherAverageCell.swift in Sources */,
 				B8CD65D52CCABD2F00E8F8B3 /* UITableViewCell.swift in Sources */,
 				B8CD65B12CCAB7E900E8F8B3 /* AppDelegate.swift in Sources */,
 				B8CD65D12CCABBD300E8F8B3 /* UIColor.swift in Sources */,
