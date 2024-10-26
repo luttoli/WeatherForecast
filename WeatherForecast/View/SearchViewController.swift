@@ -78,8 +78,8 @@ private extension SearchViewController {
         
         cityListTableView.snp.makeConstraints {
             $0.top.equalTo(searchBar.snp.bottom).offset(Constants.margin.vertical)
-            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+            $0.leading.equalTo(view.safeAreaLayoutGuide)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.vertical)
         }
         cityListTableView.delegate = self
