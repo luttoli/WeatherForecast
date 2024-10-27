@@ -14,12 +14,12 @@ class CurrentWeatherInfoCell: UITableViewCell {
     var cityNameLabel = CustomLabel(title: "", size: Constants.size.size40, weight: .Regular, color: .text.black)
     var temperatureLabel = CustomLabel(title: "", size: Constants.size.size80, weight: .medium, color: .text.black)
     var weatherLabel = CustomLabel(title: "", size: Constants.size.size30, weight: .Regular, color: .text.black)
-    var bestTemperatuerLabel = CustomLabel(title: "", size: Constants.size.size20, weight: .Regular, color: .text.black)
+    var bestTemperatureLabel = CustomLabel(title: "", size: Constants.size.size20, weight: .Regular, color: .text.black)
     var contourLabel = CustomLabel(title: "|", size: Constants.size.size20, weight: .Regular, color: .text.black)
-    var lowestTemperatuerLabel = CustomLabel(title: "", size: Constants.size.size20, weight: .Regular, color: .text.black)
+    var lowestTemperatureLabel = CustomLabel(title: "", size: Constants.size.size20, weight: .Regular, color: .text.black)
     
     private lazy var bestLowestHorizontalStackView: UIStackView = {
-        let bestLowestHorizontalStackView = UIStackView(arrangedSubviews: [bestTemperatuerLabel, contourLabel, lowestTemperatuerLabel])
+        let bestLowestHorizontalStackView = UIStackView(arrangedSubviews: [bestTemperatureLabel, contourLabel, lowestTemperatureLabel])
         bestLowestHorizontalStackView.axis = .horizontal
         bestLowestHorizontalStackView.spacing = Constants.margin.horizontal
         bestLowestHorizontalStackView.alignment = .center
@@ -73,11 +73,32 @@ private extension CurrentWeatherInfoCell {
 
 // MARK: - Method
 extension CurrentWeatherInfoCell {
-    func configure() {
-        cityNameLabel.text = "Seoul"
-        temperatureLabel.text = "-7°"
-        weatherLabel.text = "맑음"
-        bestTemperatuerLabel.text = "최고: -1°"
-        lowestTemperatuerLabel.text = "최저: -11°"
+    func configure(with weather: Weather) {
+        guard let city = weather.city,
+              let weatherList = weather.list else { return }
+        
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "Asia/Seoul")
+        dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+        
+        let closestWeather = weatherList.min { item1, item2 in
+            guard let date1 = dateFormatter.date(from: item1.dtTxt ?? ""),
+                  let date2 = dateFormatter.date(from: item2.dtTxt ?? "") else {
+                return false
+            }
+            return abs(date1.timeIntervalSince(now)) < abs(date2.timeIntervalSince(now))
+        }
+        
+        cityNameLabel.text = city.name ?? ""
+        
+        if let main = closestWeather?.main {
+            temperatureLabel.text = "\(toCelsius(main.temp ?? 0))°"
+            bestTemperatureLabel.text = "최고: \(toCelsius(main.tempMax ?? 0))°"
+            lowestTemperatureLabel.text = "최저: \(toCelsius(main.tempMin ?? 0))°"
+        }
+        
+        weatherLabel.text = closestWeather?.weather?.first?.main ?? ""
     }
 }

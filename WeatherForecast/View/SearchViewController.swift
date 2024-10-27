@@ -71,8 +71,8 @@ private extension SearchViewController {
         
         searchBar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.vertical)
-            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.margin.horizontal)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.margin.horizontal)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(Constants.spacing.px10)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-Constants.spacing.px10)
         }
         searchBar.delegate = self
         

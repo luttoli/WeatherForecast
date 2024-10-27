@@ -7,11 +7,14 @@
 
 import UIKit
 
+import RxSwift
 import SnapKit
 
 class WeatherInfoViewController: UIViewController {
     // MARK: - Properties
-    
+    private let viewModel = WeatherViewModel()
+    private let disposeBag = DisposeBag()
+    private var weatherData: [Weather] = []
     
     // MARK: - Components
     private let weatherTableView: UITableView = {
@@ -22,8 +25,6 @@ class WeatherInfoViewController: UIViewController {
         weatherTableView.register(CityLocationCell.self, forCellReuseIdentifier: CityLocationCell.identifier)
         weatherTableView.register(OtherAverageCell.self, forCellReuseIdentifier: OtherAverageCell.identifier)
         weatherTableView.backgroundColor = .clear
-        weatherTableView.tableFooterView = UIView(frame: .zero)
-        weatherTableView.sectionFooterHeight = 0
         weatherTableView.showsVerticalScrollIndicator = false
         weatherTableView.separatorStyle = .none
         return weatherTableView
@@ -48,6 +49,7 @@ extension WeatherInfoViewController {
         
         navigationUI()
         setUp()
+        bindViewModel()
     }
 }
 
@@ -87,7 +89,15 @@ private extension WeatherInfoViewController {
 
 // MARK: - Method
 private extension WeatherInfoViewController {
-    
+    private func bindViewModel() {
+        viewModel.weather
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] weatherData in
+                self?.weatherData = weatherData
+                self?.weatherTableView.reloadData()
+            })
+            .disposed(by: disposeBag)
+    }
 }
 
 // MARK: - Delegate
@@ -171,7 +181,9 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
             
             cell.selectionStyle = .none
             
-            cell.configure()
+            if let weather = weatherData.first {
+                cell.configure(with: weather)
+            }
             
             return cell
         } else if indexPath.section == 1 {

@@ -11,8 +11,8 @@ import SnapKit
 
 class CityListCell: UITableViewCell {
     // MARK: - Components
-    var cityNameLabel = CustomLabel(title: "", size: Constants.size.size20, weight: .SemiBold, color: .text.black)
-    var countryNameLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
+    var cityNameLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .SemiBold, color: .text.black)
+    var countryNameLabel = CustomLabel(title: "", size: Constants.size.size13, weight: .Regular, color: .text.black)
     var separator = CustomSeparator(height: 1)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
