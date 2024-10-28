@@ -208,13 +208,21 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
                 cell.layer.cornerRadius = Constants.radius.px12
                 cell.layer.masksToBounds = true
                 cell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+                cell.separator.isHidden = true
             } else {
                 cell.layer.cornerRadius = 0
+                cell.separator.isHidden = false
             }
             
-            
-            
-            
+            if indexPath.row == 0 {
+                if let weather = weatherData.first {
+                    cell.firstConfigure(with: weather)
+                }
+            } else {
+                if let weather = weatherData.first {
+                    cell.configure(forDay: indexPath.row, with: weather)
+                }
+            }
             
             return cell
         } else if indexPath.section == 3 {

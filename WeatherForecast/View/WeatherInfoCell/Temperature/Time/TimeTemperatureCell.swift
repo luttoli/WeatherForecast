@@ -11,9 +11,9 @@ import SnapKit
 
 class TimeTemperatureCell: UICollectionViewCell {
     // MARK: - Components
-    var timeLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
+    var timeLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .SemiBold, color: .text.white)
     var iconImageView = UIImageView()
-    var temperatureLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
+    var temperatureLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .SemiBold, color: .text.white)
     
     override init(frame: CGRect) {
         super.init(frame: frame)

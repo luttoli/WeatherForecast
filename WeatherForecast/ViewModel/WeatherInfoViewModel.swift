@@ -25,11 +25,4 @@ class WeatherViewModel {
     func updateLocation(lat: Double, lon: Double) {
         location.onNext((lat, lon))
     }
-    
-    func getDayOfWeek(from date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E"
-        dateFormatter.locale = Locale(identifier: "ko_KR")
-        return dateFormatter.string(from: date)
-    }
 }

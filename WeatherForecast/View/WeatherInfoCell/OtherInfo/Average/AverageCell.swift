@@ -12,10 +12,9 @@ import SnapKit
 class AverageCell: UICollectionViewCell {
     // MARK: - Components
     var titles: [String] = ["습도", "구름", "바람 속도", "기압"]
-    var averages: [String] = ["56%", "50%", "1.97m/s", "1,030hpa"]
     
-    var titleLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .light, color: .text.black)
-    var averageLabel = CustomLabel(title: "", size: Constants.size.size35, weight: .Regular, color: .text.black)
+    var titleLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .light, color: .text.white)
+    var averageLabel = CustomLabel(title: "", size: Constants.size.size35, weight: .SemiBold, color: .text.white)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,15 +41,27 @@ private extension AverageCell {
             $0.centerY.equalTo(contentView)
             $0.leading.equalTo(contentView).offset(Constants.margin.horizontal)
         }
+        averageLabel.numberOfLines = 0
     }
 }
 
 // MARK: - Method
 extension AverageCell {
-    func configure(with indexPath: IndexPath) {
+    func configure(with indexPath: IndexPath, humidity: String, clouds: String, averageWind: String, pressure: String) {
         let titleIndex = indexPath.row % titles.count
-        let averageIndex = indexPath.row % averages.count
         titleLabel.text = titles[titleIndex]
-        averageLabel.text = averages[averageIndex]
+        
+        switch titleIndex {
+        case 0:
+            averageLabel.text = humidity
+        case 1:
+            averageLabel.text = clouds
+        case 2:
+            averageLabel.text = averageWind
+        case 3:
+            averageLabel.text = pressure
+        default:
+            averageLabel.text = "데이터 없음"
+        }
     }
 }
