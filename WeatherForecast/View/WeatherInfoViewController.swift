@@ -89,7 +89,7 @@ private extension WeatherInfoViewController {
 }
 
 // MARK: - Method
-private extension WeatherInfoViewController {
+extension WeatherInfoViewController {
     private func bindViewModel() {
         viewModel.weather
             .observe(on: MainScheduler.instance)
@@ -98,6 +98,10 @@ private extension WeatherInfoViewController {
                 self?.weatherTableView.reloadData()
             })
             .disposed(by: disposeBag)
+    }
+    
+    func updateLocation(lat: Double, lon: Double) {
+        viewModel.updateLocation(lat: lat, lon: lon)
     }
 }
 

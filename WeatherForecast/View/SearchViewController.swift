@@ -15,6 +15,7 @@ class SearchViewController: UIViewController {
     private let viewModel = SearchViewModel()
     private let disposeBag = DisposeBag()
     private var cities: [CityList] = []
+    private var filteredCities: [CityList] = []
     
     // MARK: - Components
     private let searchBar: UISearchBar = {
@@ -94,6 +95,7 @@ private extension SearchViewController {
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] cities in
                 self?.cities = cities
+                self?.filteredCities = cities
                 self?.cityListTableView.reloadData()
             })
             .disposed(by: disposeBag)
@@ -103,18 +105,25 @@ private extension SearchViewController {
 // MARK: - Delegate
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
+        searchBar.resignFirstResponder()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        if searchText.isEmpty {
+            filteredCities = cities
+        } else {
+            filteredCities = cities.filter { city in
+                return city.name.lowercased().contains(searchText.lowercased())
+            }
+        }
+        cityListTableView.reloadData()
     }
 }
 
 // MARK: - TableViewDelegate
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cities.count
+        return filteredCities.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -123,7 +132,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
         
-        let city = cities[indexPath.row]
+        let city = filteredCities[indexPath.row]
 
         cell.configure(with: city)
         
@@ -132,5 +141,16 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constants.size.size80
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCity = filteredCities[indexPath.row]
+        let weatherInfoVC = WeatherInfoViewController()
+        
+        weatherInfoVC.updateLocation(lat: selectedCity.coord.lat, lon: selectedCity.coord.lon)
+                
+        self.dismiss(animated: true) {
+            self.navigationController?.pushViewController(weatherInfoVC, animated: true)
+        }
     }
 }
