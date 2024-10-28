@@ -50,14 +50,16 @@ private extension CityLocationCell {
         }
         mapView.layer.cornerRadius = Constants.radius.px12
         mapView.layer.masksToBounds = true
-        
-        centerMapOnLocation(latitude: 37.5665, longitude: 126.9780)
-        addPinToMap(latitude: 37.5665, longitude: 126.9780, title: "서울")
     }
 }
 
 // MARK: - Method
 extension CityLocationCell {
+    func updateMapLocation(latitude: Double, longitude: Double, title: String) {
+        centerMapOnLocation(latitude: latitude, longitude: longitude)
+        addPinToMap(latitude: latitude, longitude: longitude, title: title)
+    }
+    
     func centerMapOnLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let region = MKCoordinateRegion(center: location, latitudinalMeters: 2500000, longitudinalMeters: 2500000)

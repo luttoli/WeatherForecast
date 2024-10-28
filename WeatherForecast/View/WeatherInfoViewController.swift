@@ -15,6 +15,7 @@ class WeatherInfoViewController: UIViewController {
     private let viewModel = WeatherViewModel()
     private let disposeBag = DisposeBag()
     private var weatherData: [Weather] = []
+    private var weatherList: [List] = []
     
     // MARK: - Components
     private let weatherTableView: UITableView = {
@@ -124,7 +125,7 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
         headerView.layer.masksToBounds = true
         headerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
-        let headerLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .light, color: .text.black)
+        let headerLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .light, color: .text.white)
         let separator = CustomSeparator(height: 1)
         
         if section == 1 {
@@ -211,7 +212,9 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
                 cell.layer.cornerRadius = 0
             }
             
-            cell.configure()
+            
+            
+            
             
             return cell
         } else if indexPath.section == 3 {
@@ -223,6 +226,10 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
             cell.layer.cornerRadius = Constants.radius.px12
             cell.layer.masksToBounds = true
             cell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+            
+            if let weather = weatherData.first {
+                cell.updateMapLocation(latitude: weather.city?.coord?.lat ?? 0, longitude: weather.city?.coord?.lon ?? 0, title: weather.city?.name ?? "")
+            }
             
             return cell
         } else if indexPath.section == 4 {

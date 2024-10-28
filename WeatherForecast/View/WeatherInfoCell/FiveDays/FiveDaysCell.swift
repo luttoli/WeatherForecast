@@ -10,6 +10,9 @@ import UIKit
 import SnapKit
 
 class FiveDaysCell: UITableViewCell {
+    // MARK: - Properties
+    private let viewModel = WeatherViewModel()
+    
     // MARK: - Components
     var dayLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .Regular, color: .text.black)
     var iconImageView = UIImageView()
@@ -61,9 +64,12 @@ private extension FiveDaysCell {
 
 // MARK: - Method
 extension FiveDaysCell {
-    func configure() {
-        dayLabel.text = "오늘"
-        iconImageView.image = .checkmark
-        temperatureLabel.text = "최소: -7°   최고: 25°"
-    }
+//    func configure() {
+//        dayLabel.text = "오늘"
+//        iconImageView.image = .checkmark
+//        temperatureLabel.text = "최소: -7°   최고: 25°"
+//    }
+    
+    
+    
 }

@@ -18,6 +18,7 @@ extension UIColor {
         var black = UIColor.black
         var red = UIColor.red
         var darkGray = UIColor.darkGray
+        var white = UIColor.white
     }
     
     struct ImageViewColor {

@@ -15,7 +15,7 @@ class TemperatureCell: UITableViewCell {
     private let viewModel = WeatherViewModel()
     private let disposeBag = DisposeBag()
     private var weatherData: [Weather] = []
-    private var upcomingWeatherList: [List] = []
+    private var weatherList: [List] = []
     
     // MARK: - Components
     let temperatureCollectionView: UICollectionView = {
@@ -63,7 +63,7 @@ extension TemperatureCell {
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] weatherData in
                 self?.weatherData = weatherData
-                self?.updateUpcomingWeatherList() // 리스트 업데이트
+                self?.updateUpcomingWeatherList()
                 self?.temperatureCollectionView.reloadData()
             })
             .disposed(by: disposeBag)
@@ -86,20 +86,20 @@ extension TemperatureCell {
             return abs(date1.timeIntervalSince(now)) < abs(date2.timeIntervalSince(now))
         }?.offset ?? 0
 
-        upcomingWeatherList = Array(weatherList[closestIndex..<min(closestIndex + 16, weatherList.count)])
+        self.weatherList = Array(weatherList[closestIndex..<min(closestIndex + 16, weatherList.count)])
     }
 }
 
 // MARK: - CollectionViewDelegate
 extension TemperatureCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return upcomingWeatherList.count
+        return weatherList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TimeTemperatureCell.identifier, for: indexPath) as? TimeTemperatureCell else { return UICollectionViewCell() }
         
-        let weatherInfo = upcomingWeatherList[indexPath.item]
+        let weatherInfo = weatherList[indexPath.item]
         cell.configure(with: weatherInfo)
         
         return cell
