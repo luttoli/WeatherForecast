@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import SnapKit
 
-class WeatherInfoViewController: UIViewController {
+class WeatherInfoViewController: UIViewController, SearchViewControllerDelegate {
     // MARK: - Properties
     private let viewModel = WeatherViewModel()
     private let disposeBag = DisposeBag()
@@ -103,6 +103,10 @@ extension WeatherInfoViewController {
     func updateLocation(lat: Double, lon: Double) {
         viewModel.updateLocation(lat: lat, lon: lon)
     }
+    
+    func didSelectLocation(lat: Double, lon: Double) {
+        viewModel.updateLocation(lat: lat, lon: lon)
+    }
 }
 
 // MARK: - Delegate
@@ -111,6 +115,7 @@ extension WeatherInfoViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         let searchVC = SearchViewController()
         searchVC.modalPresentationStyle = .formSheet
+        searchVC.delegate = self
         present(searchVC, animated: true, completion: nil)
     }
 }

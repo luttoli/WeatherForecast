@@ -10,12 +10,18 @@ import UIKit
 import RxSwift
 import SnapKit
 
+protocol SearchViewControllerDelegate: AnyObject {
+    func didSelectLocation(lat: Double, lon: Double)
+}
+
 class SearchViewController: UIViewController {
     // MARK: - Properties
     private let viewModel = SearchViewModel()
     private let disposeBag = DisposeBag()
     private var cities: [CityList] = []
     private var filteredCities: [CityList] = []
+    
+    weak var delegate: SearchViewControllerDelegate?
     
     // MARK: - Components
     private let searchBar: UISearchBar = {
@@ -148,6 +154,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let weatherInfoVC = WeatherInfoViewController()
         
         weatherInfoVC.updateLocation(lat: selectedCity.coord.lat, lon: selectedCity.coord.lon)
+        
+        delegate?.didSelectLocation(lat: selectedCity.coord.lat, lon: selectedCity.coord.lon)
 
         self.dismiss(animated: true) {
             self.navigationController?.pushViewController(weatherInfoVC, animated: true)
