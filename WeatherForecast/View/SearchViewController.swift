@@ -148,7 +148,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let weatherInfoVC = WeatherInfoViewController()
         
         weatherInfoVC.updateLocation(lat: selectedCity.coord.lat, lon: selectedCity.coord.lon)
-                
+
         self.dismiss(animated: true) {
             self.navigationController?.pushViewController(weatherInfoVC, animated: true)
         }

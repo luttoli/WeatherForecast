@@ -56,6 +56,11 @@ private extension FiveDaysCell {
             $0.width.height.equalTo(Constants.size.size30)
         }
         
+        temperatureLabel.snp.makeConstraints {
+            $0.width.equalTo(125)
+        }
+        temperatureLabel.textAlignment = .right
+        
         dayInfoHorizontalStackView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalTo(contentView).offset(Constants.margin.horizontal)
