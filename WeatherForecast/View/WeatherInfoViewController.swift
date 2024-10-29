@@ -100,7 +100,7 @@ extension WeatherInfoViewController {
             .disposed(by: disposeBag)
     }
     
-    func updateLocation(lat: Double, lon: Double) {
+    func updateLocation(lat: Double, lon: Double) { //
         viewModel.updateLocation(lat: lat, lon: lon)
     }
     
