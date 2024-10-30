@@ -15,7 +15,6 @@ class WeatherInfoViewController: UIViewController, SearchViewControllerDelegate 
     private let viewModel = WeatherViewModel()
     private let disposeBag = DisposeBag()
     private var weatherData: [Weather] = []
-    private var weatherList: [List] = []
     
     // MARK: - Components
     private let weatherTableView: UITableView = {
@@ -98,10 +97,6 @@ extension WeatherInfoViewController {
                 self?.weatherTableView.reloadData()
             })
             .disposed(by: disposeBag)
-    }
-    
-    func updateLocation(lat: Double, lon: Double) { //
-        viewModel.updateLocation(lat: lat, lon: lon)
     }
     
     func didSelectLocation(lat: Double, lon: Double) {
