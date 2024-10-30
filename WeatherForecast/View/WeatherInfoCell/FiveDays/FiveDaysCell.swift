@@ -25,6 +25,7 @@ class FiveDaysCell: UITableViewCell {
         dayInfoHorizontalStackView.spacing = 0
         dayInfoHorizontalStackView.alignment = .center
         dayInfoHorizontalStackView.distribution = .equalSpacing
+        temperatureLabel.textAlignment = .right
         return dayInfoHorizontalStackView
     }()
     
@@ -49,7 +50,7 @@ private extension FiveDaysCell {
         contentView.addSubview(separator)
         
         dayLabel.snp.makeConstraints {
-            $0.width.equalTo(30)
+            $0.width.equalTo(Constants.size.size30)
         }
         
         iconImageView.snp.makeConstraints {
@@ -57,9 +58,8 @@ private extension FiveDaysCell {
         }
         
         temperatureLabel.snp.makeConstraints {
-            $0.width.equalTo(125)
+            $0.width.equalTo(Constants.size.size150)
         }
-        temperatureLabel.textAlignment = .right
         
         dayInfoHorizontalStackView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
