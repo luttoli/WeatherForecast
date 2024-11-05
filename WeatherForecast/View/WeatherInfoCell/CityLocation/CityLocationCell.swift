@@ -34,7 +34,6 @@ class CityLocationCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        // 기존 핀 제거 코드
         mapView.removeAnnotations(mapView.annotations)
     }
 }

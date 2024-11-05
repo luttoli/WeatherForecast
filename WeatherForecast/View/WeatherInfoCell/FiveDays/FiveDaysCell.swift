@@ -110,7 +110,6 @@ extension FiveDaysCell {
         }
     }
     
-    
     func configure(forDay dayOffset: Int, with weather: Weather) {
         guard let weatherList = weather.list else { return }
         

@@ -201,6 +201,8 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
             cell.layer.masksToBounds = true
             cell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
             
+            cell.configure(with: weatherData)
+            
             return cell
         } else if indexPath.section == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: FiveDaysCell.identifier, for: indexPath) as? FiveDaysCell else { return UITableViewCell() }
@@ -249,6 +251,8 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
             
             cell.backgroundColor = .clear
             cell.selectionStyle = .none
+            
+            cell.configure(with: weatherData)
 
             return cell
         }
