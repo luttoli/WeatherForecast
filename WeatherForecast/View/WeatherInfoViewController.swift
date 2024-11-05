@@ -10,12 +10,11 @@ import UIKit
 import RxSwift
 import SnapKit
 
-class WeatherInfoViewController: UIViewController {
+class WeatherInfoViewController: UIViewController, SearchViewControllerDelegate {
     // MARK: - Properties
     private let viewModel = WeatherViewModel()
     private let disposeBag = DisposeBag()
     private var weatherData: [Weather] = []
-    private var weatherList: [List] = []
     
     // MARK: - Components
     private let weatherTableView: UITableView = {
@@ -100,7 +99,7 @@ extension WeatherInfoViewController {
             .disposed(by: disposeBag)
     }
     
-    func updateLocation(lat: Double, lon: Double) {
+    func didSelectLocation(lat: Double, lon: Double) {
         viewModel.updateLocation(lat: lat, lon: lon)
     }
 }
@@ -111,6 +110,7 @@ extension WeatherInfoViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         let searchVC = SearchViewController()
         searchVC.modalPresentationStyle = .formSheet
+        searchVC.delegate = self
         present(searchVC, animated: true, completion: nil)
     }
 }
@@ -201,6 +201,8 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
             cell.layer.masksToBounds = true
             cell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
             
+            cell.configure(with: weatherData)
+            
             return cell
         } else if indexPath.section == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: FiveDaysCell.identifier, for: indexPath) as? FiveDaysCell else { return UITableViewCell() }
@@ -249,6 +251,8 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
             
             cell.backgroundColor = .clear
             cell.selectionStyle = .none
+            
+            cell.configure(with: weatherData)
 
             return cell
         }

@@ -31,7 +31,6 @@ class TemperatureCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUp()
-        bindViewModel()
     }
     
     required init?(coder: NSCoder) {
@@ -40,6 +39,7 @@ class TemperatureCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        temperatureCollectionView.reloadData()
     }
 }
 
@@ -58,17 +58,6 @@ private extension TemperatureCell {
 
 // MARK: - Method
 extension TemperatureCell {
-    private func bindViewModel() {
-        viewModel.weather
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] weatherData in
-                self?.weatherData = weatherData
-                self?.updateUpcomingWeatherList()
-                self?.temperatureCollectionView.reloadData()
-            })
-            .disposed(by: disposeBag)
-    }
-    
     private func updateUpcomingWeatherList() {
         guard let weather = weatherData.first, let weatherList = weather.list else { return }
         
@@ -87,6 +76,12 @@ extension TemperatureCell {
         }?.offset ?? 0
 
         self.weatherList = Array(weatherList[closestIndex..<min(closestIndex + 16, weatherList.count)])
+    }
+    
+    func configure(with weatherData: [Weather]) {
+        self.weatherData = weatherData
+        updateUpcomingWeatherList()
+        temperatureCollectionView.reloadData()
     }
 }
 

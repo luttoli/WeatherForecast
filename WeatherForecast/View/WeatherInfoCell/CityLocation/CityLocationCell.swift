@@ -34,6 +34,7 @@ class CityLocationCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        mapView.removeAnnotations(mapView.annotations)
     }
 }
 

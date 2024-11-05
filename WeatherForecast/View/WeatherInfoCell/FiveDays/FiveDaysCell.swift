@@ -25,6 +25,7 @@ class FiveDaysCell: UITableViewCell {
         dayInfoHorizontalStackView.spacing = 0
         dayInfoHorizontalStackView.alignment = .center
         dayInfoHorizontalStackView.distribution = .equalSpacing
+        temperatureLabel.textAlignment = .right
         return dayInfoHorizontalStackView
     }()
     
@@ -49,11 +50,15 @@ private extension FiveDaysCell {
         contentView.addSubview(separator)
         
         dayLabel.snp.makeConstraints {
-            $0.width.equalTo(30)
+            $0.width.equalTo(Constants.size.size30)
         }
         
         iconImageView.snp.makeConstraints {
             $0.width.height.equalTo(Constants.size.size30)
+        }
+        
+        temperatureLabel.snp.makeConstraints {
+            $0.width.equalTo(Constants.size.size150)
         }
         
         dayInfoHorizontalStackView.snp.makeConstraints {
@@ -104,7 +109,6 @@ extension FiveDaysCell {
             temperatureLabel.text = "\(lowestTemp)   \(bestTemp)"
         }
     }
-    
     
     func configure(forDay dayOffset: Int, with weather: Weather) {
         guard let weatherList = weather.list else { return }

@@ -32,7 +32,6 @@ class OtherAverageCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUp()
-        bindViewModel()
     }
     
     required init?(coder: NSCoder) {
@@ -58,18 +57,7 @@ private extension OtherAverageCell {
 }
 
 // MARK: - Method
-extension OtherAverageCell {
-    private func bindViewModel() {
-        viewModel.weather
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] weatherData in
-                self?.weatherData = weatherData
-                self?.updateUpcomingWeatherList()
-                self?.averageCollectionView.reloadData()
-            })
-            .disposed(by: disposeBag)
-    }
-    
+extension OtherAverageCell {    
     private func updateUpcomingWeatherList() {
         guard let weather = weatherData.first, let weatherList = weather.list else {
             print("weatherData 또는 weather.list가 비어있음")
@@ -91,6 +79,12 @@ extension OtherAverageCell {
         }?.offset ?? 0
 
         self.weatherList = Array(weatherList[closestIndex..<min(closestIndex + 7, weatherList.count)])
+    }
+    
+    func configure(with weatherData: [Weather]) {
+        self.weatherData = weatherData
+        updateUpcomingWeatherList()
+        averageCollectionView.reloadData()
     }
 }
 
