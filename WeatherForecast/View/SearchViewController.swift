@@ -61,6 +61,11 @@ extension SearchViewController {
         setUp()
         bindViewModel()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        searchBar.becomeFirstResponder()
+    }
 }
 
 // MARK: - Navigation
