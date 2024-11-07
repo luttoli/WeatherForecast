@@ -136,7 +136,7 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
             headerLabel.text = "시간별 일기예보"
         } else if section == 2 {
             headerLabel.text = "5일간의 일기예보"
-        } else if section == 3 {
+        } else {
             headerLabel.text = "강수량"
         }
         
@@ -246,7 +246,7 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
             }
             
             return cell
-        } else if indexPath.section == 4 {
+        } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: OtherAverageCell.identifier, for: indexPath) as? OtherAverageCell else { return UITableViewCell() }
             
             cell.backgroundColor = .clear
@@ -256,8 +256,6 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
 
             return cell
         }
-        
-        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -270,10 +268,9 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
         } else if indexPath.section == 3 {
             let width = tableView.frame.width - (Constants.margin.horizontal * 2)
             return width
-        } else if indexPath.section == 4 {
+        } else {
             let width = tableView.frame.width
             return width
         }
-        return CGFloat()
     }
 }
