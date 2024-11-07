@@ -11,7 +11,14 @@ import Alamofire
 import RxSwift
 
 class WeatherService {
-    private let apiKey = "4640171147eef15fd5deecfaf3e3c1b9"
+    private var apiKey: String {
+        guard let path = Bundle.main.path(forResource: "Config", ofType: "plist"),
+              let xml = FileManager.default.contents(atPath: path),
+              let config = try? PropertyListDecoder().decode([String: String].self, from: xml) else {
+            fatalError("API Key not found")
+        }
+        return config["API_KEY"] ?? ""
+    }
     
     func fetchWeatherForecast(lat: Double, lon: Double) -> Observable<[Weather]> {
         let url = "https://api.openweathermap.org/data/2.5/forecast"

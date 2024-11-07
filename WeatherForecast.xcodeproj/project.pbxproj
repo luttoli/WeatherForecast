@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B877DBEE2CDCB565009D9C49 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = B877DBED2CDCB565009D9C49 /* Config.plist */; };
 		B8CD65AD2CCAB7E900E8F8B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8CD65A42CCAB7E900E8F8B3 /* Assets.xcassets */; };
 		B8CD65B12CCAB7E900E8F8B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65A32CCAB7E900E8F8B3 /* AppDelegate.swift */; };
 		B8CD65B22CCAB7E900E8F8B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CD65AA2CCAB7E900E8F8B3 /* SceneDelegate.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B877DBED2CDCB565009D9C49 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		B8CD658B2CCAB75800E8F8B3 /* WeatherForecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherForecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8CD65A32CCAB7E900E8F8B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8CD65A42CCAB7E900E8F8B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				B8CD65A32CCAB7E900E8F8B3 /* AppDelegate.swift */,
 				B8CD65A42CCAB7E900E8F8B3 /* Assets.xcassets */,
 				B8CD65A52CCAB7E900E8F8B3 /* Info.plist */,
+				B877DBED2CDCB565009D9C49 /* Config.plist */,
 				B8CD65BD2CCAB8D600E8F8B3 /* LaunchScreen.storyboard */,
 				B8CD65F72CCD4DF000E8F8B3 /* reduced_citylist.json */,
 			);
@@ -371,6 +374,7 @@
 				B8CD65AD2CCAB7E900E8F8B3 /* Assets.xcassets in Resources */,
 				B8CD65F82CCD4DF000E8F8B3 /* reduced_citylist.json in Resources */,
 				B8CD65BE2CCAB8D600E8F8B3 /* LaunchScreen.storyboard in Resources */,
+				B877DBEE2CDCB565009D9C49 /* Config.plist in Resources */,
 				B8CD65C02CCAB90700E8F8B3 /* PretendardVariable.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
