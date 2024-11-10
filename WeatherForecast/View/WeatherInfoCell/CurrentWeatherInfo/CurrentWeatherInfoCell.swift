@@ -49,8 +49,7 @@ private extension CurrentWeatherInfoCell {
         contentView.addSubview(bestLowestHorizontalStackView)
         
         cityNameLabel.snp.makeConstraints {
-            $0.leading.trailing.equalTo(contentView)
-            $0.top.equalTo(contentView).offset(Constants.margin.vertical)
+            $0.top.leading.trailing.equalTo(contentView)
         }
         cityNameLabel.numberOfLines = 1
         cityNameLabel.textAlignment = .center

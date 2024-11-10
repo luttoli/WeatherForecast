@@ -132,16 +132,20 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
         let headerLabel = CustomLabel(title: "", size: Constants.size.size15, weight: .light, color: .text.white)
         let separator = CustomSeparator(height: 1)
         
-        if section == 1 {
-            headerLabel.text = "시간별 일기예보"
-        } else if section == 2 {
-            headerLabel.text = "5일간의 일기예보"
-        } else {
-            headerLabel.text = "강수량"
-        }
-        
         headerView.addSubview(headerLabel)
         headerView.addSubview(separator)
+        
+        switch section {
+        case 1:
+            headerLabel.text = "시간별 일기예보"
+        case 2:
+            headerLabel.text = "5일간의 일기예보"
+        case 3:
+            headerLabel.text = "강수량"
+            separator.isHidden = true
+        default:
+            break
+        }
         
         headerLabel.snp.makeConstraints {
             $0.centerY.equalTo(headerView)
@@ -149,38 +153,34 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
             $0.trailing.equalTo(headerView).offset(-Constants.margin.horizontal)
         }
         
-        if section == 3 {
-            separator.isHidden = true
-        } else {
-            separator.snp.makeConstraints {
-                $0.leading.equalTo(headerView).offset(Constants.margin.horizontal)
-                $0.trailing.equalTo(headerView).offset(-Constants.margin.horizontal)
-                $0.bottom.equalTo(headerView)
-            }
+        separator.snp.makeConstraints {
+            $0.leading.equalTo(headerView).offset(Constants.margin.horizontal)
+            $0.trailing.equalTo(headerView).offset(-Constants.margin.horizontal)
+            $0.bottom.equalTo(headerView)
         }
         
         return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
+        switch section {
+        case 0, 4:
             return 0
-        } else if section == 4 {
-            return 0
-        } else {
+        default:
             return Constants.size.size40
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 2 {
+        switch section {
+        case 2:
             return 5
-        } else {
+        default :
             return 1
         }
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { // switch문 바꾸기
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrentWeatherInfoCell.identifier, for: indexPath) as? CurrentWeatherInfoCell else { return UITableViewCell() }
             
@@ -259,16 +259,17 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 260
-        } else if indexPath.section == 1 {
-            return 100
-        } else if indexPath.section == 2 {
-            return 50
-        } else if indexPath.section == 3 {
+        switch indexPath.section {
+        case 0:
+            return Constants.size.size250
+        case 1:
+            return Constants.size.size100
+        case 2:
+            return Constants.size.size50
+        case 3:
             let width = tableView.frame.width - (Constants.margin.horizontal * 2)
             return width
-        } else {
+        default:
             let width = tableView.frame.width
             return width
         }
