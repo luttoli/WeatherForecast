@@ -48,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		B877DBED2CDCB565009D9C49 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		B877DBFA2CE1A4AD009D9C49 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B8CD658B2CCAB75800E8F8B3 /* WeatherForecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherForecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8CD65A32CCAB7E900E8F8B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8CD65A42CCAB7E900E8F8B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -102,6 +103,7 @@
 		B8CD65822CCAB75800E8F8B3 = {
 			isa = PBXGroup;
 			children = (
+				B877DBFA2CE1A4AD009D9C49 /* README.md */,
 				B8CD65AC2CCAB7E900E8F8B3 /* WeatherForecast */,
 				B8CD65FF2CCD558B00E8F8B3 /* Frameworks */,
 				B8CD658C2CCAB75800E8F8B3 /* Products */,
