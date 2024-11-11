@@ -76,8 +76,8 @@ private extension FiveDaysCell {
 }
 
 // MARK: - Method
-extension FiveDaysCell {
-    func firstConfigure(with weather: Weather) {
+extension FiveDaysCell {    
+    func configure(with weather: Weather, dayOffset: Int = 0) {
         guard let weatherList = weather.list else { return }
         
         let now = Date()
@@ -86,47 +86,17 @@ extension FiveDaysCell {
         dateFormatter.locale = Locale(identifier: "Asia/Seoul")
         dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
         
-        let closestWeather = weatherList.min { item1, item2 in
-            guard let date1 = dateFormatter.date(from: item1.dtTxt ?? ""),
-                  let date2 = dateFormatter.date(from: item2.dtTxt ?? "") else {
-                return false
-            }
-            return abs(date1.timeIntervalSince(now)) < abs(date2.timeIntervalSince(now))
-        }
-        
-        dayLabel.text = "오늘"
-        
-        if let main = closestWeather?.main {
-            if let weather = closestWeather, let iconCode = weather.weather?.first?.icon {
-                iconImageView.image = Icon.loadIcon(for: iconCode)
-            } else {
-                iconImageView.image = nil
-            }
-            
-            let lowestTemp = "최저: \(toCelsius(main.tempMin ?? 0))°"
-            let bestTemp = "최고: \(toCelsius(main.tempMax ?? 0))°"
-            
-            temperatureLabel.text = "\(lowestTemp)   \(bestTemp)"
-        }
-    }
-    
-    func configure(forDay dayOffset: Int, with weather: Weather) {
-        guard let weatherList = weather.list else { return }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.locale = Locale(identifier: "Asia/Seoul")
-        dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
-        
-        let targetDate = Calendar.current.date(byAdding: .day, value: dayOffset, to: Date()) ?? Date()
+        let targetDate = Calendar.current.date(byAdding: .day, value: dayOffset, to: now) ?? now
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let targetDateString = dateFormatter.string(from: targetDate) + " 12:00:00"
         
         let specificWeather = weatherList.first { item in
-            return item.dtTxt == targetDateString
+            item.dtTxt == targetDateString
         }
         
-        if let dt = specificWeather?.dt {
+        if dayOffset == 0 {
+            dayLabel.text = "오늘"
+        } else if let dt = specificWeather?.dt {
             let date = Date(timeIntervalSince1970: TimeInterval(dt))
             let dayFormatter = DateFormatter()
             dayFormatter.dateFormat = "E"

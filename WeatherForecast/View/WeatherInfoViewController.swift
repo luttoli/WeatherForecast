@@ -180,8 +180,9 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
         }
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { // switch문 바꾸기
-        if indexPath.section == 0 {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.section {
+        case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrentWeatherInfoCell.identifier, for: indexPath) as? CurrentWeatherInfoCell else { return UITableViewCell() }
             
             cell.selectionStyle = .none
@@ -191,7 +192,7 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
             }
             
             return cell
-        } else if indexPath.section == 1 {
+        case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: TemperatureCell.identifier, for: indexPath) as? TemperatureCell else { return UITableViewCell() }
             
             cell.backgroundColor = .systemBlue
@@ -204,7 +205,7 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
             cell.configure(with: weatherData)
             
             return cell
-        } else if indexPath.section == 2 {
+        case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: FiveDaysCell.identifier, for: indexPath) as? FiveDaysCell else { return UITableViewCell() }
             
             cell.backgroundColor = .systemBlue
@@ -220,18 +221,12 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
                 cell.separator.isHidden = false
             }
             
-            if indexPath.row == 0 {
-                if let weather = weatherData.first {
-                    cell.firstConfigure(with: weather)
-                }
-            } else {
-                if let weather = weatherData.first {
-                    cell.configure(forDay: indexPath.row, with: weather)
-                }
+            if let weather = weatherData.first {
+                cell.configure(with: weather, dayOffset: indexPath.row)
             }
             
             return cell
-        } else if indexPath.section == 3 {
+        case 3:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CityLocationCell.identifier, for: indexPath) as? CityLocationCell else { return UITableViewCell() }
             
             cell.backgroundColor = .systemBlue
@@ -246,7 +241,7 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
             }
             
             return cell
-        } else {
+        case 4:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: OtherAverageCell.identifier, for: indexPath) as? OtherAverageCell else { return UITableViewCell() }
             
             cell.backgroundColor = .clear
@@ -255,6 +250,8 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
             cell.configure(with: weatherData)
 
             return cell
+        default:
+            return UITableViewCell()
         }
     }
     
